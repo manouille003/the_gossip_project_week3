@@ -1,0 +1,20 @@
+<h1>Liste des Potins</h1>
+
+<p> Cette page d'accueil affichera tous les potins créés</p>
+
+<br>
+<br>
+
+<% @gossip.each do |gossip| %>
+
+  <div class="gossip">
+    <h2><%= gossip.title %></h2>
+    <p><%= gossip.content %></p>
+    <p><em><%= gossip.author %></em></p>
+
+    <%= link_to 'Voir', gossip_path(gossip) %> | 
+    <%= link_to 'Modifier', edit_gossip_path(gossip) %> | 
+    <%= link_to 'Supprimer', gossip_path(gossip), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce potin ?' } %>
+  </div>
+
+<% end %>

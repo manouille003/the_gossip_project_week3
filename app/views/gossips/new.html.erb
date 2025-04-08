@@ -1,0 +1,35 @@
+<h1>Créer un nouveau potin</h1>
+
+<%= form_with model: @gossip, local: true do |form| %>
+  <% if @gossip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gossip.errors.count, "erreur") %> empêchent la soumission du formulaire :</h2>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Créer le potin" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour à la liste des potins', gossips_path %>
